@@ -31,7 +31,7 @@
 #endif
 
 #include <dune/common/parallel/mpicollectivecommunication.hh>
-#include <opm/parser/eclipse/EclipseState/EclipseState.hpp>
+#include <opm/parser/eclipse/EclipseState.hpp>
 #include <opm/parser/eclipse/EclipseState/Schedule/Well.hpp>
 namespace Dune
 {

@@ -20,7 +20,7 @@
 #ifndef OPM_GRIDMANAGER_HEADER_INCLUDED
 #define OPM_GRIDMANAGER_HEADER_INCLUDED
 
-#include <opm/parser/eclipse/Deck/Deck.hpp>
+#include <opm/parser/eclipse/bits/Deck/Deck.hpp>
 #include <opm/parser/eclipse/EclipseState/Grid/EclipseGrid.hpp>
 
 #include <string>

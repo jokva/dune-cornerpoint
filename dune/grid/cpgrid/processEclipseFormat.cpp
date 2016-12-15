@@ -46,8 +46,6 @@
 #include <opm/core/grid/MinpvProcessor.hpp>
 #include <opm/core/utility/StopWatch.hpp>
 
-#include <opm/parser/eclipse/Deck/Deck.hpp>
-
 #include <fstream>
 #include <iostream>
 

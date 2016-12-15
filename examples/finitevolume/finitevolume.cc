@@ -30,8 +30,7 @@
 
 #include "dune/grid/CpGrid.hpp"
 
-#include <opm/parser/eclipse/Parser/Parser.hpp>
-#include <opm/parser/eclipse/Parser/ParseContext.hpp>
+#include <opm/parser/eclipse/EclipseState.hpp>
 
 
 typedef Dune::CpGrid GridType;
@@ -119,11 +118,7 @@ void initGrid(const Dune::ParameterTree &param, GridType& grid)
         bool periodic_extension = param.get<bool>("periodic_extension", false);
         bool turn_normals = param.get<bool>("turn_normals", false);
 
-        Opm::ParseContext parseContext;
-        Opm::Parser parser;
-        auto deck = parser.parseFile(filename , parseContext);
-        const int* actnum = deck.hasKeyword("ACTNUM") ? deck.getKeyword("ACTNUM").getIntData().data() : nullptr;
-        Opm::EclipseGrid ecl_grid(deck , actnum);
+        auto ecl_grid = Opm::ecl::parseGrid( filename );
 
         grid.processEclipseFormat(ecl_grid, periodic_extension, turn_normals);
     } else if (fileformat == "cartesian") {

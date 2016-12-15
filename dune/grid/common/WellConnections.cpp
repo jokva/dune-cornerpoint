@@ -25,8 +25,7 @@
 
 #include <dune/grid/common/WellConnections.hpp>
 
-#include <opm/parser/eclipse/EclipseState/Schedule/CompletionSet.hpp>
-#include <opm/parser/eclipse/EclipseState/Schedule/Schedule.hpp>
+#include <opm/parser/eclipse/EclipseState.hpp>
 
 namespace Dune
 {

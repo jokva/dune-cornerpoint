@@ -30,10 +30,10 @@
 #include <opm/common/utility/platform_dependent/reenable_warnings.h>
 
 #include <dune/grid/CpGrid.hpp>
-#include <opm/parser/eclipse/Parser/Parser.hpp>
+#include <opm/parser/eclipse/Parser.hpp>
 #include <opm/parser/eclipse/Parser/ParseContext.hpp>
-#include <opm/parser/eclipse/Deck/Deck.hpp>
-#include <opm/parser/eclipse/Deck/DeckKeyword.hpp>
+#include <opm/parser/eclipse/bits/Deck/Deck.hpp>
+#include <opm/parser/eclipse/bits/Parsers.hpp>
 
 using namespace Dune;
 
@@ -118,10 +118,8 @@ try
         exit(1);
     }
 
-    Opm::ParseContext parseContext;
     const char* eclipsefilename = argv[1];
-    Opm::Parser parser;
-    auto deck = parser.parseFile(eclipsefilename, parseContext);
+    auto deck = Opm::ecl::parseDeck( Opm::Parser(), eclipsefilename, Opm::ParseContext() );
 
     // Get logical cartesian grid dimensions.
     std::array<size_t, 3> dims;

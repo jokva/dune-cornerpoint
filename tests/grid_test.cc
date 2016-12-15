@@ -17,9 +17,8 @@
 // Re-enable warnings.
 #include <opm/common/utility/platform_dependent/reenable_warnings.h>
 
-#include <opm/parser/eclipse/Parser/ParseContext.hpp>
-#include <opm/parser/eclipse/Parser/Parser.hpp>
-#include <opm/parser/eclipse/Deck/Deck.hpp>
+#include <opm/parser/eclipse/Parser.hpp>
+#include <opm/parser/eclipse/bits/Parsers.hpp>
 
 #include <iostream>
 
@@ -155,7 +154,7 @@ int main(int argc, char** argv )
 
     Opm::Parser parser;
     Opm::ParseContext parseContext;
-    const auto deck = parser.parseString(deckString , parseContext);
+    const auto deck = Opm::ecl::parseDeckString( parser, deckString , parseContext);
     std::vector<double> porv;
 
     // test PolyhedralGrid

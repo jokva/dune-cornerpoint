@@ -11,9 +11,8 @@
 #include <opm/core/grid/ColumnExtract.hpp>
 #include <opm/core/grid/GridManager.hpp>
 
-#include <opm/parser/eclipse/Parser/Parser.hpp>
-#include <opm/parser/eclipse/Parser/ParseContext.hpp>
-#include <opm/parser/eclipse/Deck/Deck.hpp>
+#include <opm/parser/eclipse/Parser.hpp>
+#include <opm/parser/eclipse/EclipseState.hpp>
 
 #include <cstddef>
 #include <iostream>
@@ -131,10 +130,7 @@ BOOST_AUTO_TEST_CASE(DisjointColumn)
     correct_answer[4].resize(1);
     correct_answer[9].resize(1);
 
-    Opm::ParseContext parseContext;
-    Opm::Parser parser;
-    Opm::Deck deck = parser.parseString(grdecl , parseContext);
-    Opm::EclipseGrid ep = Opm::EclipseGrid(deck);
+    auto ep = Opm::ecl::parseGridString( grdecl );
     std::vector<int> actnum;
     for (size_t i = 1; i <= (3 * 3 * 3); i++)
         actnum.push_back(i != 14); // ACTNUM 13*1 0 13* 1
